@@ -1,39 +1,35 @@
 const express = require("express");
+const logger = require("./middlewares/logger");
+const userRouter = require("./routes/users");
 
 const app = express();
 
 //middleware
 app.use(express.json());
+app.use(logger);
 
-const users = [
-  { id: 1, name: "Ahmed" },
-  { id: 2, name: "Mohamed" },
-];
+app.use("/users" ,userRouter);
+
+// app.use((req, res, next) => {
+//   console.log(req.method, req.url);
+//   next();
+// });
+
+// app.use((req, res, next) => {
+//   console.log("second middleware");
+//   if (req.body.password !== "1234") res.status(401).send("unauthorized");
+//   else next();
+// });
+
+// const myMiddleware = (req, res)=>{
+//   console.log(req.method, req.url);
+// }
+
+const posts = [{ id: 1, title: "first post", body: "first body", userId: 1 }];
 
 app.get("/", (req, res) => {
   res.send("<h1>Welcome</h1>");
 });
-
-app.get("/users", (req, res) => {
-  res.send(users);
-});
-
-app.get("/users/:id", (req, res) => {
-  const { id } = req.params;
-  const user = users.find((user) => user.id === +id);
-  res.send(user);
-});
-
-app.post("/users", (req, res) => {
-  const { name } = req.body;
-  const id = users[users.length - 1].id + 1;
-  users.push({id,name});
-  res.send(users);
-});
-
-//edit
-
-//delete
 
 app.listen(5000, (error) => {
   console.log("listening on port 5000");
