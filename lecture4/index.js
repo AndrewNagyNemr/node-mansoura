@@ -1,8 +1,18 @@
 const mongoose = require("mongoose");
-const { createUser } = require("./models/users");
+const express = require("express");
+
+const userRouter = require("./routes/user")
+
+const app = express();
+
+// middlewares
+app.use("/users", userRouter)
 
 mongoose
-  .connect("mongodb://localhost:27017/mansouraDB")
+  .connect("mongodb://localhost:27017/mansouraDB", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
   .then(() => {
     console.log("Successfully connected to Mansoura database");
   })
@@ -10,10 +20,6 @@ mongoose
     console.log(err);
   });
 
-createUser({
-    firstName : "Andrew",
-    lastName : "Nagy",
-    email :"annagy@iti.gov.eg"
-}).then((user)=>{
-    console.log(user);
-})
+app.listen(4000, () => {
+  console.log("connected");
+});

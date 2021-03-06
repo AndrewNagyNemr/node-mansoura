@@ -9,18 +9,26 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 const createUser = (user) => {
-    // const newUser = new User(user);
-    // return newUser.save()
+  // const newUser = new User(user);
+  // return newUser.save()
   return new User(user).save();
 };
 
-const getUsers = () => {};
+const getUsers = () => {
+  return User.find();
+};
 
-const getOneUser = () => {};
+const getOneUser = (id) => {
+  return User.findById(id);
+};
 
-const editUser = () => {};
+const deleteUser = (_id) => {
+  return User.deleteOne({ _id });
+};
 
-const deleteUser = () => {};
+const editUser = (_id, editedUser) => {
+  return User.updateOne({ _id }, editedUser);
+};
 
 module.exports = {
   createUser,
