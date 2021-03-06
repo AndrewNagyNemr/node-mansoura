@@ -60,3 +60,17 @@
 //     console.log("second");
 // }, 1000)
 
+
+// example one
+    // console.log(user); // user is not defined
+
+
+// example two
+    // user;
+    // console.log(user); // user is undefined
+
+// example three
+    // user = {
+    //     name: "Amir"
+    // }
+    // console.log(user.email); //undefined

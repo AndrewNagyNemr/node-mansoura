@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "echo 'running the backend tests' && node index.js",
+    "test" : "echo 'no tests available right now'"
   },
   "keywords": [],
   "author": "",
