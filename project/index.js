@@ -12,12 +12,10 @@ app.use(require("./routes/auth"))
 
 app.get("/", auth, (req, res)=>{
     const token = req.get("token")
-    console.log(token);
     res.send("welocme")
 })
 
 mongoose.connect("mongodb://localhost/MansouraDb", { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
-    console.log("connected to db");
     app.listen(port, () => console.log(`listening on http://localhost:${port}`));
 }).catch(err => {
     console.log(err);
