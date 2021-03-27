@@ -1,0 +1,19 @@
+<%- include("includes/head") %>
+    <form method="POST" action="<%= `/users/edit/${user._id}` %> ">
+        <div class="form-group">
+            <label>Address</label>
+            <input name="address" value="<%= user.address %> " type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>First Name</label>
+            <input name="firstName" value="<%= user.firstName %> " type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input name="lastName" value="<%= user.lastName %> " type="text" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/" class="btn btn-warning">Back</a>
+    </form>
+<%- include("includes/tail") %>
